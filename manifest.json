@@ -1,0 +1,276 @@
+{
+  "name": "PSP™ Game Explorer - PlayStation® Official",
+  "short_name": "PSP™ Explorer",
+  "description": "Official PlayStation® Portable game collection platform. Discover, explore, and manage your PSP™ gaming library with Sony's premium gaming experience.",
+  "version": "2.0.0",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "theme_color": "#006FCD",
+  "background_color": "#000000",
+  "scope": "/",
+  "lang": "en-US",
+  "dir": "ltr",
+  
+  "categories": [
+    "games",
+    "entertainment",
+    "productivity"
+  ],
+  
+  "icons": [
+    {
+      "src": "assets/icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/icons/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  
+  "screenshots": [
+    {
+      "src": "assets/screenshots/desktop-home.png",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "platform": "wide",
+      "label": "PSP™ Explorer home dashboard"
+    },
+    {
+      "src": "assets/screenshots/desktop-games.png",
+      "sizes": "1920x1080", 
+      "type": "image/png",
+      "platform": "wide",
+      "label": "Browse PlayStation® Portable games"
+    },
+    {
+      "src": "assets/screenshots/desktop-detail.png",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "platform": "wide",
+      "label": "Detailed game information and media"
+    },
+    {
+      "src": "assets/screenshots/mobile-home.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "platform": "narrow",
+      "label": "Mobile optimized experience"
+    },
+    {
+      "src": "assets/screenshots/mobile-library.png",
+      "sizes": "390x844",
+      "type": "image/png", 
+      "platform": "narrow",
+      "label": "Manage your PSP™ library on mobile"
+    }
+  ],
+  
+  "shortcuts": [
+    {
+      "name": "Quick Search",
+      "short_name": "Search",
+      "description": "Search PSP™ games instantly",
+      "url": "/?action=search",
+      "icons": [
+        {
+          "src": "assets/icons/search-96x96.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "My Library",
+      "short_name": "Library",
+      "description": "View your PlayStation® game library",
+      "url": "/#collection",
+      "icons": [
+        {
+          "src": "assets/icons/library-96x96.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Browse Genres",
+      "short_name": "Genres",
+      "description": "Explore games by genre",
+      "url": "/#genres",
+      "icons": [
+        {
+          "src": "assets/icons/genres-96x96.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Featured Games",
+      "short_name": "Featured",
+      "description": "Discover featured PSP™ titles",
+      "url": "/?action=featured",
+      "icons": [
+        {
+          "src": "assets/icons/featured-96x96.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
+  
+  "share_target": {
+    "action": "/share",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url",
+      "files": [
+        {
+          "name": "media",
+          "accept": ["image/*", "video/*"]
+        }
+      ]
+    }
+  },
+  
+  "protocol_handlers": [
+    {
+      "protocol": "web+pspgame",
+      "url": "/game/%s"
+    },
+    {
+      "protocol": "web+playstation",
+      "url": "/ps/%s"
+    }
+  ],
+  
+  "file_handlers": [
+    {
+      "action": "/import",
+      "accept": {
+        "application/json": [".json"],
+        "text/csv": [".csv"],
+        "application/x-psp-save": [".psv"]
+      }
+    }
+  ],
+  
+  "related_applications": [
+    {
+      "platform": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.playstation.pspexplorer",
+      "id": "com.playstation.pspexplorer"
+    },
+    {
+      "platform": "itunes",
+      "url": "https://apps.apple.com/app/playstation-psp-explorer/id1234567890"
+    },
+    {
+      "platform": "windows",
+      "url": "https://www.microsoft.com/store/apps/9NBLGGH4TNNS"
+    }
+  ],
+  
+  "prefer_related_applications": false,
+  
+  "edge_side_panel": {
+    "preferred_width": 480
+  },
+  
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
+  
+  "handle_links": "preferred",
+  
+  "scope_extensions": [
+    {
+      "origin": "https://api.playstation.com"
+    },
+    {
+      "origin": "https://store.playstation.com"
+    },
+    {
+      "origin": "https://api.rawg.io"
+    }
+  ],
+  
+  "note_taking": {
+    "new_note_url": "/notes/new"
+  },
+  
+  "permissions": [
+    "storage",
+    "notifications",
+    "background-sync",
+    "persistent-storage"
+  ],
+  
+  "features": [
+    "cross-origin-isolated",
+    "gamepad",
+    "screen-wake-lock"
+  ],
+  
+  "display_override": [
+    "window-controls-overlay",
+    "fullscreen",
+    "minimal-ui",
+    "standalone",
+    "browser"
+  ],
+  
+  "id": "playstation-psp-explorer",
+  
+  "iarc_rating_id": "e84b072d-71b3-4d3e-86ae-31a8ce4e53b7",
+  
+  "publisher": "Sony Interactive Entertainment",
+  
+  "gcm_sender_id": "103953800507"
+}

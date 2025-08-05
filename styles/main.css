@@ -1,0 +1,979 @@
+/* ===============================================
+   PSP Game Explorer - Sony PlayStation Edition
+   AAA Gaming Platform Design System
+   =============================================== */
+
+/* Sony PlayStation Design System Variables */
+:root {
+  /* Official PlayStation Color System */
+  --ps-blue: #006FCD;           /* PlayStation Blue */
+  --ps-blue-dark: #003087;      /* Deep PlayStation Blue */
+  --ps-blue-light: #0085FF;     /* Light PlayStation Blue */
+  --ps-black: #000000;          /* Pure Black */
+  --ps-white: #FFFFFF;          /* Pure White */
+  
+  /* PlayStation UI Colors */
+  --primary-color: #006FCD;
+  --primary-hover: #0085FF;
+  --primary-active: #003087;
+  --secondary-color: #00D9FF;    /* PlayStation Cyan */
+  --accent-color: #FFD700;       /* PlayStation Gold */
+  --success-color: #00E676;      /* PlayStation Green */
+  --warning-color: #FFC400;      /* PlayStation Yellow */
+  --error-color: #FF1744;        /* PlayStation Red */
+  --epic-purple: #7B61FF;        /* Epic/Legendary Purple */
+  
+  /* Sony Premium Neutrals */
+  --neutral-50: #FAFAFA;
+  --neutral-100: #F5F5F5;
+  --neutral-200: #EEEEEE;
+  --neutral-300: #E0E0E0;
+  --neutral-400: #BDBDBD;
+  --neutral-500: #9E9E9E;
+  --neutral-600: #757575;
+  --neutral-700: #616161;
+  --neutral-800: #424242;
+  --neutral-900: #212121;
+  --neutral-950: #0A0A0A;
+  
+  /* PlayStation Background System */
+  --bg-primary: #000000;
+  --bg-secondary: #050505;
+  --bg-tertiary: #0A0A0A;
+  --bg-surface: #0F0F0F;
+  --bg-elevated: #141414;
+  --bg-overlay: rgba(0, 0, 0, 0.95);
+  
+  /* Premium Glass Morphism */
+  --glass-white: rgba(255, 255, 255, 0.02);
+  --glass-border: rgba(255, 255, 255, 0.05);
+  --glass-strong: rgba(255, 255, 255, 0.08);
+  --glass-blur: blur(40px);
+  --glass-blur-heavy: blur(80px);
+  
+  /* PlayStation Text Hierarchy */
+  --text-primary: #FFFFFF;
+  --text-secondary: rgba(255, 255, 255, 0.87);
+  --text-muted: rgba(255, 255, 255, 0.6);
+  --text-disabled: rgba(255, 255, 255, 0.38);
+  --text-inverse: #000000;
+  
+  /* PlayStation Gradient System */
+  --gradient-ps: linear-gradient(135deg, #006FCD 0%, #003087 100%);
+  --gradient-premium: linear-gradient(135deg, #006FCD 0%, #00D9FF 100%);
+  --gradient-epic: linear-gradient(135deg, #7B61FF 0%, #FF006E 100%);
+  --gradient-gold: linear-gradient(135deg, #FFD700 0%, #FF8C00 100%);
+  --gradient-surface: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.9) 100%);
+  
+  /* Sony Spacing System (8px base) */
+  --spacing-xxs: 0.125rem;  /* 2px */
+  --spacing-xs: 0.25rem;    /* 4px */
+  --spacing-sm: 0.5rem;     /* 8px */
+  --spacing-md: 1rem;       /* 16px */
+  --spacing-lg: 1.5rem;     /* 24px */
+  --spacing-xl: 2rem;       /* 32px */
+  --spacing-2xl: 2.5rem;    /* 40px */
+  --spacing-3xl: 3rem;      /* 48px */
+  --spacing-4xl: 4rem;      /* 64px */
+  --spacing-5xl: 5rem;      /* 80px */
+  --spacing-6xl: 6rem;      /* 96px */
+  
+  /* PlayStation Typography */
+  --font-primary: 'SST', 'Helvetica Neue', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --font-heading: 'SST Heavy', 'Helvetica Neue', -apple-system, BlinkMacSystemFont, Arial Black, sans-serif;
+  --font-mono: 'Courier New', 'Roboto Mono', monospace;
+  
+  --font-size-xxs: 0.625rem;   /* 10px */
+  --font-size-xs: 0.75rem;     /* 12px */
+  --font-size-sm: 0.875rem;    /* 14px */
+  --font-size-base: 1rem;      /* 16px */
+  --font-size-lg: 1.125rem;    /* 18px */
+  --font-size-xl: 1.25rem;     /* 20px */
+  --font-size-2xl: 1.5rem;     /* 24px */
+  --font-size-3xl: 1.875rem;   /* 30px */
+  --font-size-4xl: 2.25rem;    /* 36px */
+  --font-size-5xl: 3rem;       /* 48px */
+  --font-size-6xl: 3.75rem;    /* 60px */
+  --font-size-7xl: 4.5rem;     /* 72px */
+  
+  /* PlayStation Border Radius */
+  --radius-none: 0;
+  --radius-xs: 0.125rem;   /* 2px */
+  --radius-sm: 0.25rem;    /* 4px */
+  --radius-md: 0.375rem;   /* 6px */
+  --radius-lg: 0.5rem;     /* 8px */
+  --radius-xl: 0.75rem;    /* 12px */
+  --radius-2xl: 1rem;      /* 16px */
+  --radius-3xl: 1.25rem;   /* 20px */
+  --radius-full: 9999px;
+  
+  /* PlayStation Shadow System */
+  --shadow-xs: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --shadow-sm: 0 3px 6px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.12);
+  --shadow-md: 0 10px 20px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.10);
+  --shadow-lg: 0 15px 25px rgba(0, 0, 0, 0.15), 0 5px 10px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.2);
+  --shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.25);
+  --shadow-inner: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+  --shadow-ps-glow: 0 0 40px rgba(0, 111, 205, 0.3);
+  --shadow-ps-intense: 0 0 60px rgba(0, 111, 205, 0.5);
+  
+  /* PlayStation Animations */
+  --transition-fast: 0.15s cubic-bezier(0.215, 0.61, 0.355, 1);
+  --transition-base: 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  --transition-slow: 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+  --transition-ps: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  
+  /* Z-index Hierarchy */
+  --z-base: 0;
+  --z-dropdown: 1000;
+  --z-sticky: 1100;
+  --z-modal: 2000;
+  --z-notification: 3000;
+  --z-tooltip: 4000;
+  --z-loading: 9999;
+}
+
+/* ===============================================
+   Global Reset - Sony Standards
+   =============================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+}
+
+body {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  line-height: 1.5;
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* PlayStation Dynamic Background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(ellipse at top left, rgba(0, 111, 205, 0.1) 0%, transparent 40%),
+    radial-gradient(ellipse at bottom right, rgba(0, 217, 255, 0.05) 0%, transparent 40%),
+    radial-gradient(ellipse at center, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 1) 100%);
+  pointer-events: none;
+  z-index: -2;
+}
+
+/* PlayStation Particle Effect */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(2px 2px at 20% 30%, rgba(0, 111, 205, 0.3), transparent),
+    radial-gradient(2px 2px at 60% 70%, rgba(0, 217, 255, 0.2), transparent),
+    radial-gradient(1px 1px at 90% 10%, rgba(255, 255, 255, 0.1), transparent);
+  background-size: 200px 200px;
+  animation: particleFloat 120s linear infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes particleFloat {
+  from { transform: translate(0, 0); }
+  to { transform: translate(-100px, -100px); }
+}
+
+/* ===============================================
+   PlayStation Typography
+   =============================================== */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-md);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+h1 { 
+  font-size: var(--font-size-6xl); 
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  background: linear-gradient(180deg, #FFFFFF 0%, rgba(255,255,255,0.8) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+h2 { 
+  font-size: var(--font-size-5xl); 
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+h3 { 
+  font-size: var(--font-size-4xl); 
+  font-weight: 700;
+}
+
+h4 { 
+  font-size: var(--font-size-3xl); 
+  font-weight: 600;
+}
+
+h5 { 
+  font-size: var(--font-size-2xl); 
+  font-weight: 600;
+}
+
+h6 { 
+  font-size: var(--font-size-xl); 
+  font-weight: 600;
+}
+
+p {
+  margin-bottom: var(--spacing-md);
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+a {
+  color: var(--ps-blue-light);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+  position: relative;
+}
+
+a:hover {
+  color: var(--secondary-color);
+}
+
+/* ===============================================
+   Layout System
+   =============================================== */
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+  position: relative;
+}
+
+.main-content {
+  padding-top: 80px;
+  min-height: 100vh;
+  position: relative;
+}
+
+.page {
+  display: none;
+  opacity: 0;
+  transition: opacity var(--transition-slow);
+}
+
+.page.active {
+  display: block;
+  opacity: 1;
+  animation: pageEnter 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===============================================
+   PlayStation Loading Screen
+   =============================================== */
+
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-loading);
+  transition: opacity var(--transition-slow);
+}
+
+.loading-screen.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loading-content {
+  text-align: center;
+  position: relative;
+}
+
+.loading-logo {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto var(--spacing-2xl);
+  background: var(--gradient-ps);
+  border-radius: var(--radius-3xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-4xl);
+  font-weight: 900;
+  color: white;
+  box-shadow: var(--shadow-ps-glow);
+  animation: pulsateGlow 2s ease-in-out infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+.loading-logo::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+@keyframes pulsateGlow {
+  0%, 100% { 
+    transform: scale(1);
+    box-shadow: var(--shadow-ps-glow);
+  }
+  50% { 
+    transform: scale(1.05);
+    box-shadow: var(--shadow-ps-intense);
+  }
+}
+
+.loading-text {
+  font-size: var(--font-size-xl);
+  font-weight: 300;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-3xl);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.loading-bar {
+  width: 320px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  margin: 0 auto;
+  position: relative;
+}
+
+.loading-progress {
+  height: 100%;
+  background: var(--gradient-premium);
+  border-radius: var(--radius-full);
+  box-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
+  transition: width var(--transition-slow);
+}
+
+/* ===============================================
+   PlayStation Navigation Bar
+   =============================================== */
+
+.main-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  z-index: var(--z-sticky);
+  transition: all var(--transition-base);
+}
+
+.main-nav::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--ps-blue), transparent);
+  animation: scanline 8s linear infinite;
+}
+
+@keyframes scanline {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: var(--font-size-xl);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.nav-brand:hover {
+  transform: scale(1.02);
+}
+
+.nav-logo {
+  width: 48px;
+  height: 48px;
+  background: var(--gradient-ps);
+  border-radius: var(--radius-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-xl);
+  color: white;
+  font-weight: 900;
+  box-shadow: var(--shadow-md), 0 0 30px rgba(0, 111, 205, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-logo::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  animation: logosweep 3s infinite;
+}
+
+@keyframes logosweep {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+.nav-title {
+  background: linear-gradient(90deg, #FFFFFF 0%, #00D9FF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.02em;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.nav-link {
+  color: var(--text-muted);
+  font-weight: 500;
+  font-size: var(--font-size-sm);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--radius-full);
+  transition: all var(--transition-fast);
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  overflow: hidden;
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-premium);
+  transition: all var(--transition-fast);
+  transform: translateX(-50%);
+}
+
+.nav-link:hover {
+  color: var(--text-primary);
+  background: rgba(0, 111, 205, 0.1);
+}
+
+.nav-link:hover::before {
+  width: 80%;
+}
+
+.nav-link.active {
+  color: var(--ps-blue-light);
+  background: rgba(0, 111, 205, 0.15);
+}
+
+.nav-link.active::before {
+  width: 80%;
+  background: var(--gradient-premium);
+  box-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.nav-btn {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-muted);
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background: var(--gradient-ps);
+  border-radius: var(--radius-full);
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform var(--transition-fast);
+  opacity: 0.3;
+}
+
+.nav-btn:hover {
+  color: var(--text-primary);
+  border-color: var(--ps-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 111, 205, 0.3);
+}
+
+.nav-btn:hover::before {
+  transform: translate(-50%, -50%) scale(2);
+}
+
+/* ===============================================
+   PlayStation Hero Section
+   =============================================== */
+
+.hero-section {
+  text-align: center;
+  padding: var(--spacing-6xl) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(0, 111, 205, 0.1) 0%, transparent 70%);
+  animation: heroRotate 30s linear infinite;
+}
+
+@keyframes heroRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.hero-title {
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 900;
+  /* Use the more refined premium gradient */
+  background: var(--gradient-premium);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: var(--spacing-lg);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  /* A more subtle, downward shadow for a cleaner look */
+  text-shadow: 0 4px 30px rgba(0, 111, 205, 0.2);
+  /* We remove the animation for a more static, elegant feel */
+}
+
+
+.hero-subtitle {
+  font-size: var(--font-size-xl);
+  color: var(--text-muted);
+  font-weight: 300;
+  margin-bottom: var(--spacing-5xl);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-lg);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* ===============================================
+   PlayStation Cards
+   =============================================== */
+
+.stat-card {
+  background: linear-gradient(135deg, rgba(0, 111, 205, 0.03) 0%, rgba(0, 0, 0, 0.5) 100%);
+  border: 1px solid rgba(0, 111, 205, 0.2);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-3xl) var(--spacing-2xl);
+  text-align: center;
+  backdrop-filter: blur(40px);
+  transition: all var(--transition-ps);
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--gradient-premium);
+  transform: scaleX(0);
+  transition: transform var(--transition-ps);
+  transform-origin: left;
+}
+
+.stat-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, rgba(0, 217, 255, 0.05) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity var(--transition-ps);
+}
+
+.stat-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: var(--ps-blue-light);
+  box-shadow: 0 20px 60px rgba(0, 111, 205, 0.3), 0 0 60px rgba(0, 217, 255, 0.2);
+  background: linear-gradient(135deg, rgba(0, 111, 205, 0.08) 0%, rgba(0, 0, 0, 0.6) 100%);
+}
+
+.stat-card:hover::before {
+  transform: scaleX(1);
+}
+
+.stat-card:hover::after {
+  opacity: 1;
+}
+
+.stat-number {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-5xl);
+  font-weight: 900;
+  background: var(--gradient-premium);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: block;
+  margin-bottom: var(--spacing-sm);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-shadow: 0 0 30px rgba(0, 217, 255, 0.5);
+}
+
+.stat-label {
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ===============================================
+   Section Headers
+   =============================================== */
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-4xl);
+  font-weight: 800;
+  color: var(--text-primary);
+  text-align: center;
+  margin-bottom: var(--spacing-3xl);
+  position: relative;
+  letter-spacing: -0.02em;
+  padding-bottom: var(--spacing-lg);
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: var(--gradient-premium);
+  border-radius: var(--radius-full);
+  box-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
+}
+
+/* ===============================================
+   Scrollbar Styling
+   =============================================== */
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--ps-blue) 0%, var(--ps-blue-dark) 100%);
+  border-radius: var(--radius-full);
+  border: 2px solid rgba(0, 0, 0, 0.5);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--ps-blue-light) 0%, var(--ps-blue) 100%);
+}
+
+/* ===============================================
+   Selection Styling
+   =============================================== */
+
+::selection {
+  background: rgba(0, 111, 205, 0.3);
+  color: var(--text-primary);
+}
+
+::-moz-selection {
+  background: rgba(0, 111, 205, 0.3);
+  color: var(--text-primary);
+}
+
+/* ===============================================
+   Focus Styling
+   =============================================== */
+
+:focus-visible {
+  outline: 2px solid var(--ps-blue-light);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Ensure the anchor tag behaves like a block element */
+.nav-brand {
+  text-decoration: none; /* Remove underline from link */
+}
+
+/* Refine the logo with a modern, glassy look */
+.nav-logo {
+  /* Replace solid gradient with a semi-transparent glass effect */
+  background: var(--glass-white);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-md); /* Softer shadow */
+}
+
+.nav-brand:hover .nav-logo {
+  border-color: var(--ps-blue-light);
+  box-shadow: var(--shadow-md), 0 0 30px rgba(0, 111, 205, 0.4);
+}
+
+/* Refine the title text for better readability and elegance */
+.nav-title {
+  /* Replace the busy gradient with a clean, bright color */
+  background: none;
+  -webkit-background-clip: initial;
+  -webkit-text-fill-color: initial;
+  background-clip: initial;
+  color: var(--text-secondary); /* A slightly softer white */
+  transition: all var(--transition-fast);
+}
+
+/* Make the title glow slightly on hover for a premium feel */
+.nav-brand:hover .nav-title {
+  color: var(--text-primary);
+  text-shadow: 0 0 8px rgba(0, 217, 255, 0.7);
+}
+
+/* ===============================================
+   Responsive Design
+   =============================================== */
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 var(--spacing-md);
+  }
+  
+  .hero-section {
+    padding: var(--spacing-5xl) 0;
+  }
+  
+  .hero-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-menu {
+    display: none;
+  }
+  
+  .nav-container {
+    padding: 0 var(--spacing-md);
+    height: 70px;
+  }
+  
+  .nav-logo {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .nav-btn {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .hero-section {
+    padding: var(--spacing-4xl) 0;
+  }
+  
+  .hero-title {
+    font-size: clamp(2.5rem, 10vw, 4rem);
+  }
+  
+  .hero-subtitle {
+    font-size: var(--font-size-lg);
+  }
+  
+  .hero-stats {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+  
+  .stat-card {
+    padding: var(--spacing-2xl) var(--spacing-xl);
+  }
+  
+  .stat-number {
+    font-size: var(--font-size-4xl);
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 var(--spacing-sm);
+  }
+  
+  .hero-section {
+    padding: var(--spacing-3xl) 0;
+  }
+  
+  .section-title {
+    font-size: var(--font-size-3xl);
+  }
+}
+
+/* ===============================================
+   Utility Classes
+   =============================================== */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.hidden { display: none !important; }
+.invisible { visibility: hidden; }
+
+/* ===============================================
+   Print Styles
+   =============================================== */
+
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+  
+  .main-nav,
+  .nav-actions,
+  .loading-screen {
+    display: none;
+  }
+}

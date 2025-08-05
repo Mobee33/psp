@@ -1,0 +1,857 @@
+/* ===============================================
+   PSP Game Explorer - Sony PlayStation Animations
+   AAA Gaming Platform Motion Design System
+   =============================================== */
+
+/* ===============================================
+   PlayStation Keyframe Library
+   =============================================== */
+
+/* Core Entrance Animations */
+@keyframes psEnter {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes psEnterLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes psEnterRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes psEnterScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* PlayStation Glow Effects */
+@keyframes psGlow {
+  0%, 100% {
+    box-shadow: 
+      0 0 20px rgba(0, 111, 205, 0.5),
+      0 0 40px rgba(0, 111, 205, 0.3),
+      0 0 60px rgba(0, 111, 205, 0.1);
+  }
+  50% {
+    box-shadow: 
+      0 0 30px rgba(0, 111, 205, 0.7),
+      0 0 60px rgba(0, 111, 205, 0.5),
+      0 0 90px rgba(0, 111, 205, 0.3);
+  }
+}
+
+@keyframes psGlowText {
+  0%, 100% {
+    text-shadow: 
+      0 0 10px rgba(0, 217, 255, 0.5),
+      0 0 20px rgba(0, 217, 255, 0.3),
+      0 0 30px rgba(0, 217, 255, 0.1);
+  }
+  50% {
+    text-shadow: 
+      0 0 20px rgba(0, 217, 255, 0.8),
+      0 0 40px rgba(0, 217, 255, 0.6),
+      0 0 60px rgba(0, 217, 255, 0.4);
+  }
+}
+
+/* PlayStation Pulse Animation */
+@keyframes psPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+}
+
+@keyframes psPulseIntense {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(0, 111, 205, 0.7);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 20px rgba(0, 111, 205, 0);
+  }
+}
+
+/* PlayStation Loading Animations */
+@keyframes psLoadingDots {
+  0%, 20% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes psLoadingBar {
+  0% {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  50% {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  51% {
+    transform-origin: right;
+  }
+  100% {
+    transform: scaleX(0);
+    transform-origin: right;
+  }
+}
+
+@keyframes psLoadingSpinner {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* PlayStation Shimmer Effect */
+@keyframes psShimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes psShimmerDiagonal {
+  0% {
+    transform: translateX(-100%) translateY(-100%);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%);
+  }
+}
+
+/* PlayStation Wave Animation */
+@keyframes psWave {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-20px);
+  }
+  75% {
+    transform: translateY(10px);
+  }
+}
+
+@keyframes psWaveSmooth {
+  0% {
+    transform: translateY(0) translateX(0);
+  }
+  33% {
+    transform: translateY(-15px) translateX(5px);
+  }
+  66% {
+    transform: translateY(15px) translateX(-5px);
+  }
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+}
+
+/* PlayStation Gradient Animations */
+@keyframes psGradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes psGradientRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* PlayStation Notification Animations */
+@keyframes psNotificationSlide {
+  from {
+    opacity: 0;
+    transform: translateX(100%) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes psNotificationBounce {
+  0% {
+    transform: translateX(100%);
+  }
+  60% {
+    transform: translateX(-10px);
+  }
+  80% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* PlayStation Trophy/Achievement Animation */
+@keyframes psTrophy {
+  0% {
+    transform: scale(0) rotate(-180deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2) rotate(10deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* PlayStation XMB-style Navigation */
+@keyframes psXMBSlide {
+  from {
+    opacity: 0;
+    transform: translateX(-30px) scale(0.95);
+    filter: blur(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* PlayStation Button Press */
+@keyframes psButtonPress {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.95);
+  }
+}
+
+/* PlayStation Level Up Animation */
+@keyframes psLevelUp {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-50px) scale(1.5);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-100px) scale(0);
+    opacity: 0;
+  }
+}
+
+/* PlayStation Ripple Effect */
+@keyframes psRipple {
+  0% {
+    transform: scale(0);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* PlayStation Scanner Effect */
+@keyframes psScanLine {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+/* PlayStation Glitch Effect */
+@keyframes psGlitch {
+  0%, 100% {
+    transform: translate(0);
+    filter: hue-rotate(0deg);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+    filter: hue-rotate(90deg);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+    filter: hue-rotate(180deg);
+  }
+  60% {
+    transform: translate(2px, 2px);
+    filter: hue-rotate(270deg);
+  }
+  80% {
+    transform: translate(2px, -2px);
+    filter: hue-rotate(360deg);
+  }
+}
+
+/* ===============================================
+   PlayStation Animation Classes
+   =============================================== */
+
+/* Entrance Animations */
+.ps-enter {
+  animation: psEnter 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.ps-enter-left {
+  animation: psEnterLeft 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.ps-enter-right {
+  animation: psEnterRight 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.ps-enter-scale {
+  animation: psEnterScale 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* Glow Animations */
+.ps-glow {
+  animation: psGlow 3s ease-in-out infinite;
+}
+
+.ps-glow-text {
+  animation: psGlowText 3s ease-in-out infinite;
+}
+
+/* Pulse Animations */
+.ps-pulse {
+  animation: psPulse 2s ease-in-out infinite;
+}
+
+.ps-pulse-intense {
+  animation: psPulseIntense 1.5s ease-out infinite;
+}
+
+/* Loading Animations */
+.ps-loading-dots span {
+  display: inline-block;
+  animation: psLoadingDots 1.4s ease-in-out infinite;
+}
+
+.ps-loading-dots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.ps-loading-dots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.ps-loading-bar {
+  animation: psLoadingBar 2s ease-in-out infinite;
+}
+
+.ps-loading-spinner {
+  animation: psLoadingSpinner 1s linear infinite;
+}
+
+/* Shimmer Effects */
+.ps-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 217, 255, 0.2) 50%,
+    transparent 100%
+  );
+  background-size: 1000px 100%;
+  animation: psShimmer 2s infinite;
+}
+
+.ps-shimmer-diagonal::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(0, 217, 255, 0.1) 50%,
+    transparent 70%
+  );
+  animation: psShimmerDiagonal 3s infinite;
+}
+
+/* Wave Animations */
+.ps-wave {
+  animation: psWave 3s ease-in-out infinite;
+}
+
+.ps-wave-smooth {
+  animation: psWaveSmooth 6s ease-in-out infinite;
+}
+
+/* Gradient Animations */
+.ps-gradient-shift {
+  background-size: 200% 200%;
+  animation: psGradientShift 4s ease infinite;
+}
+
+.ps-gradient-rotate::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 0deg,
+    transparent,
+    var(--ps-blue),
+    transparent
+  );
+  animation: psGradientRotate 10s linear infinite;
+}
+
+/* Trophy Animation */
+.ps-trophy {
+  animation: psTrophy 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* XMB Navigation */
+.ps-xmb-slide {
+  animation: psXMBSlide 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* Button Press */
+.ps-button-press:active {
+  animation: psButtonPress 0.2s ease;
+}
+
+/* Level Up */
+.ps-level-up {
+  animation: psLevelUp 1s ease-out;
+}
+
+/* Ripple Effect */
+.ps-ripple::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(0, 217, 255, 0.5);
+  transform: translate(-50%, -50%);
+  animation: psRipple 0.6s ease-out;
+}
+
+/* Scanner Effect */
+.ps-scan-line::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 217, 255, 0.8),
+    transparent
+  );
+  animation: psScanLine 3s linear infinite;
+}
+
+/* Glitch Effect */
+.ps-glitch {
+  position: relative;
+}
+
+.ps-glitch:hover {
+  animation: psGlitch 0.3s linear;
+}
+
+/* ===============================================
+   PlayStation Hover States
+   =============================================== */
+
+.ps-hover-lift {
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.ps-hover-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    0 0 60px rgba(0, 111, 205, 0.2);
+}
+
+.ps-hover-scale {
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.ps-hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.ps-hover-glow {
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.ps-hover-glow:hover {
+  box-shadow: 
+    0 0 30px rgba(0, 111, 205, 0.6),
+    0 0 60px rgba(0, 217, 255, 0.4);
+}
+
+.ps-hover-slide {
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.ps-hover-slide:hover {
+  transform: translateX(10px);
+}
+
+/* ===============================================
+   PlayStation Staggered Animations
+   =============================================== */
+
+.ps-stagger > * {
+  opacity: 0;
+  animation: psEnter 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+.ps-stagger > *:nth-child(1) { animation-delay: 0.05s; }
+.ps-stagger > *:nth-child(2) { animation-delay: 0.1s; }
+.ps-stagger > *:nth-child(3) { animation-delay: 0.15s; }
+.ps-stagger > *:nth-child(4) { animation-delay: 0.2s; }
+.ps-stagger > *:nth-child(5) { animation-delay: 0.25s; }
+.ps-stagger > *:nth-child(6) { animation-delay: 0.3s; }
+.ps-stagger > *:nth-child(7) { animation-delay: 0.35s; }
+.ps-stagger > *:nth-child(8) { animation-delay: 0.4s; }
+.ps-stagger > *:nth-child(9) { animation-delay: 0.45s; }
+.ps-stagger > *:nth-child(10) { animation-delay: 0.5s; }
+
+/* PlayStation Card Stagger */
+.ps-card-stagger > * {
+  opacity: 0;
+  transform: translateY(30px) scale(0.95);
+  animation: psEnter 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+.ps-card-stagger > *:nth-child(1) { animation-delay: 0.1s; }
+.ps-card-stagger > *:nth-child(2) { animation-delay: 0.2s; }
+.ps-card-stagger > *:nth-child(3) { animation-delay: 0.3s; }
+.ps-card-stagger > *:nth-child(4) { animation-delay: 0.4s; }
+.ps-card-stagger > *:nth-child(5) { animation-delay: 0.5s; }
+.ps-card-stagger > *:nth-child(6) { animation-delay: 0.6s; }
+
+/* ===============================================
+   PlayStation Transitions
+   =============================================== */
+
+.ps-transition-fast {
+  transition: all 0.15s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.ps-transition {
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.ps-transition-slow {
+  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.ps-transition-smooth {
+  transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* ===============================================
+   PlayStation Page Transitions
+   =============================================== */
+
+.ps-page-enter {
+  animation: psEnter 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.ps-page-exit {
+  animation: psEnter 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) reverse;
+}
+
+/* ===============================================
+   PlayStation Modal Animations
+   =============================================== */
+
+.ps-modal-backdrop {
+  animation: fadeIn 0.3s ease;
+}
+
+.ps-modal-content {
+  animation: psEnterScale 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ===============================================
+   PlayStation Focus States
+   =============================================== */
+
+.ps-focus:focus {
+  outline: none;
+  box-shadow: 
+    0 0 0 2px var(--ps-blue),
+    0 0 0 4px rgba(0, 111, 205, 0.3);
+}
+
+.ps-focus-glow:focus {
+  outline: none;
+  animation: psGlow 2s ease-in-out infinite;
+}
+
+/* ===============================================
+   PlayStation Interactive Elements
+   =============================================== */
+
+.ps-interactive {
+  position: relative;
+  overflow: hidden;
+}
+
+.ps-interactive::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(
+    circle,
+    rgba(0, 217, 255, 0.3) 0%,
+    transparent 70%
+  );
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s;
+}
+
+.ps-interactive:hover::before {
+  width: 150%;
+  height: 150%;
+}
+
+.ps-interactive:active::before {
+  width: 200%;
+  height: 200%;
+}
+
+/* ===============================================
+   PlayStation Skeleton Loading
+   =============================================== */
+
+.ps-skeleton {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.05) 25%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.05) 75%
+  );
+  background-size: 200% 100%;
+  animation: psShimmer 1.5s infinite;
+}
+
+/* ===============================================
+   PlayStation Smooth Scroll
+   =============================================== */
+
+.ps-smooth-scroll {
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+}
+
+.ps-smooth-scroll > * {
+  scroll-snap-align: start;
+}
+
+/* ===============================================
+   PlayStation Parallax
+   =============================================== */
+
+.ps-parallax {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.ps-parallax-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.ps-parallax-layer-back {
+  transform: translateZ(-1px) scale(2);
+}
+
+.ps-parallax-layer-base {
+  transform: translateZ(0);
+}
+
+.ps-parallax-layer-front {
+  transform: translateZ(1px) scale(0.5);
+}
+
+/* ===============================================
+   PlayStation Performance Optimizations
+   =============================================== */
+
+.ps-gpu {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  will-change: transform;
+}
+
+.ps-no-select {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* ===============================================
+   PlayStation Accessibility
+   =============================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .ps-parallax-layer-back,
+  .ps-parallax-layer-front {
+    transform: none !important;
+  }
+}
+
+/* ===============================================
+   PlayStation Dark Mode Animations
+   =============================================== */
+
+@media (prefers-color-scheme: dark) {
+  .ps-glow {
+    animation: psGlow 4s ease-in-out infinite;
+  }
+  
+  .ps-shimmer {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(0, 217, 255, 0.1) 50%,
+      transparent 100%
+    );
+  }
+}
+
+/* ===============================================
+   PlayStation Mobile Animations
+   =============================================== */
+
+@media (max-width: 768px) {
+  .ps-enter {
+    animation-duration: 0.4s;
+  }
+  
+  .ps-stagger > * {
+    animation-duration: 0.4s;
+  }
+  
+  .ps-hover-lift:hover {
+    transform: translateY(-4px);
+  }
+  
+  .ps-hover-scale:hover {
+    transform: scale(1.02);
+  }
+}
+
+/* ===============================================
+   PlayStation Print Styles
+   =============================================== */
+
+@media print {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}

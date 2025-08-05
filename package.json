@@ -1,0 +1,74 @@
+{
+  "name": "psp-game-explorer",
+  "version": "1.0.0",
+  "description": "An industry-grade web application for exploring PlayStation Portable games",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve -s . -p 8000",
+    "dev": "npx live-server --port=8000 --open=/",
+    "build": "echo 'No build required - this is a vanilla JavaScript app'",
+    "test": "echo 'Tests can be added with your preferred testing framework'",
+    "deploy": "echo 'Deploy the entire folder to your hosting service'"
+  },
+  "keywords": [
+    "psp",
+    "playstation-portable",
+    "games",
+    "gaming",
+    "database",
+    "collection",
+    "retro-gaming",
+    "pwa",
+    "progressive-web-app",
+    "vanilla-javascript"
+  ],
+  "author": "PSP Game Explorer Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/psp-game-explorer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/psp-game-explorer/issues"
+  },
+  "homepage": "https://github.com/yourusername/psp-game-explorer#readme",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "serve": "^14.2.1"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ],
+  "pwa": {
+    "name": "PSP Game Explorer",
+    "short_name": "PSP Explorer",
+    "theme_color": "#00ffff",
+    "background_color": "#0a0a0a",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "start_url": "/",
+    "scope": "/"
+  },
+  "features": {
+    "offline": true,
+    "pwa": true,
+    "responsive": true,
+    "accessibility": true,
+    "analytics": true,
+    "themes": true,
+    "collections": true,
+    "search": true
+  },
+  "api": {
+    "rawg": {
+      "baseUrl": "https://api.rawg.io/api",
+      "documentation": "https://rawg.io/apidocs"
+    }
+  }
+}

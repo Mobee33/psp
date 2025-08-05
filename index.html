@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>PSP™ Game Explorer | PlayStation® Official Collection</title>
+    <meta name="description" content="Official PlayStation® Portable game collection. Discover, explore, and manage your PSP™ gaming library with Sony's premium gaming platform.">
+    <meta name="keywords" content="PSP, PlayStation Portable, Sony, PlayStation, gaming, official collection, game library">
+    <meta name="author" content="Sony Interactive Entertainment">
+    
+    <!-- PlayStation Brand Colors -->
+    <meta name="theme-color" content="#006FCD">
+    <meta name="msapplication-navbutton-color" content="#006FCD">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <!-- Preconnect to Critical Resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://api.rawg.io">
+    <link rel="dns-prefetch" href="//api.rawg.io">
+    
+    <!-- Progressive Web App -->
+    <link rel="manifest" href="./manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="PSP™ Explorer">
+    <meta name="application-name" content="PSP™ Game Explorer">
+    
+    <!-- PlayStation Styles -->
+    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/components.css">
+    <link rel="stylesheet" href="./styles/animations.css">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/icons/icon-192x192.png">
+    
+    <!-- OpenGraph Meta Tags -->
+    <meta property="og:title" content="PSP™ Game Explorer | PlayStation® Official">
+    <meta property="og:description" content="The official PlayStation® Portable game collection platform">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="./assets/og-image.png">
+    <meta property="og:site_name" content="PlayStation®">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PSP™ Game Explorer">
+    <meta name="twitter:description" content="Official PlayStation® Portable game collection">
+    <meta name="twitter:image" content="./assets/og-image.png">
+    
+    <!-- Performance -->
+    <link rel="preload" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" as="style" href="./styles/main.css">
+    <link rel="preload" as="script" href="./js/app.js">
+</head>
+<body class="ps-smooth-scroll">
+    <!-- PlayStation Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo ps-glow">
+                <span>PSP</span>
+            </div>
+            <div class="loading-text ps-shimmer">LOADING GAME EXPLORER</div>
+            <div class="loading-bar">
+                <div class="loading-progress ps-gradient-shift"></div>
+            </div>
+            <div class="ps-loading-dots" style="margin-top: 20px; color: rgba(255,255,255,0.5);">
+                <span>●</span>
+                <span>●</span>
+                <span>●</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- PlayStation Navigation Bar -->
+    <nav id="main-nav" class="main-nav ps-enter">
+        <div class="nav-container">
+            <a href="#home" class="nav-brand ps-hover-scale" data-page="home">
+                <div class="nav-logo ps-pulse">
+                    <span>P</span>
+                </div>
+                <span class="nav-title">PSP™ Explorer</span>
+            </a>
+            
+            <div class="nav-menu">
+                <a href="#home" class="nav-link active ps-interactive" data-page="home">
+                    <span>Home</span>
+                </a>
+                <a href="#games" class="nav-link ps-interactive" data-page="games">
+                    <span>Games</span>
+                </a>
+                <a href="#genres" class="nav-link ps-interactive" data-page="genres">
+                    <span>Genres</span>
+                </a>
+                <a href="#collection" class="nav-link ps-interactive" data-page="collection">
+                    <span>My Library</span>
+                </a>
+                <a href="#about" class="nav-link ps-interactive" data-page="about">
+                    <span>About</span>
+                </a>
+            </div>
+            
+            <div class="nav-actions">
+                <button id="search-btn" class="nav-btn ps-hover-glow" title="Search Games" aria-label="Search">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"/>
+                        <path d="M21 21l-4.35-4.35"/>
+                    </svg>
+                </button>
+                <button id="theme-btn" class="nav-btn ps-hover-glow" title="Toggle Theme" aria-label="Theme">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                </button>
+                <button id="user-btn" class="nav-btn ps-hover-glow" title="User Profile" aria-label="Profile">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                        <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- PlayStation Search Modal -->
+    <div id="search-modal" class="modal search-modal">
+        <div class="modal-content ps-modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Search PSP™ Games</h2>
+                <button id="search-modal-close" class="modal-close ps-interactive" title="Close">×</button>
+            </div>
+            
+            <div class="search-header">
+                <div class="search-container">
+                    <input type="text" 
+                           id="search-input" 
+                           placeholder="Search PlayStation® Portable games..." 
+                           class="search-input ps-focus"
+                           autocomplete="off"
+                           spellcheck="false">
+                    <button id="search-clear" class="search-close ps-button-press" title="Clear">×</button>
+                </div>
+                
+                <div class="search-filters ps-stagger">
+                    <button class="search-filter-btn active ps-interactive" data-filter="all">All</button>
+                    <button class="search-filter-btn ps-interactive" data-filter="action">Action</button>
+                    <button class="search-filter-btn ps-interactive" data-filter="rpg">RPG</button>
+                    <button class="search-filter-btn ps-interactive" data-filter="racing">Racing</button>
+                    <button class="search-filter-btn ps-interactive" data-filter="sports">Sports</button>
+                    <button class="search-filter-btn ps-interactive" data-filter="adventure">Adventure</button>
+                </div>
+            </div>
+            
+            <div id="search-results" class="search-results">
+                <div class="search-empty">
+                    <div class="search-empty-icon ps-pulse">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="11" cy="11" r="8"/>
+                            <path d="M21 21l-4.35-4.35"/>
+                        </svg>
+                    </div>
+                    <div class="search-empty-text">Start typing to search games</div>
+                    <div class="search-empty-hint">Try searching for "God of War" or "Gran Turismo"</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PlayStation Game Detail Modal -->
+    <div id="game-modal" class="modal game-modal">
+        <div class="modal-content ps-modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="game-modal-title">Game Details</h2>
+                <button id="game-modal-close" class="modal-close ps-interactive" title="Close">×</button>
+            </div>
+            
+            <div class="modal-body">
+                <div id="game-modal-content" class="game-modal-content">
+                    <div class="modal-loading">
+                        <div class="ps-loading-spinner"></div>
+                        <span>Loading game details...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <main id="main-content" class="main-content">
+        <!-- Home Page -->
+        <div id="home-page" class="page active">
+            <div class="container">
+                <!-- PlayStation Hero Section -->
+                <header class="hero-section ps-parallax">
+                    <div class="ps-parallax-layer ps-parallax-layer-back">
+                        <div class="hero-bg-effect"></div>
+                    </div>
+                    <div class="ps-parallax-layer ps-parallax-layer-base">
+                        <h1 class="hero-title ps-glow-text">PSP Game Explorer</h1>
+                        <p class="hero-subtitle ps-enter">
+                            Experience the ultimate PlayStation® Portable collection with industry-leading curation and management
+                        </p>
+                        <div class="hero-stats ps-card-stagger" id="hero-stats">
+                            <div class="stat-card ps-hover-lift">
+                                <span class="stat-number" data-target="20">0</span>
+                                <div class="stat-label">Genres</div>
+                            </div>
+                            <div class="stat-card ps-hover-lift">
+                                <span class="stat-number" data-target="500">0</span>
+                                <div class="stat-label">Games</div>
+                            </div>
+                            <div class="stat-card ps-hover-lift">
+                                <span class="stat-number" data-target="100">0</span>
+                                <div class="stat-label">% Quality</div>
+                            </div>
+                            <div class="stat-card ps-hover-lift">
+                                <span class="stat-number">∞</span>
+                                <div class="stat-label">Entertainment</div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- PlayStation Curated Collection -->
+                <section class="curated-section ps-enter">
+                    <h2 class="section-title">PlayStation® Curated Collection</h2>
+                    <p class="section-subtitle">Hand-selected titles that define the PSP™ legacy</p>
+                    
+                    <div id="curated-tabs-container" class="curated-tabs ps-stagger">
+                        <!-- Tabs will be loaded here -->
+                    </div>
+
+                    <div id="curated-link-container" class="curated-link-container">
+                        <!-- Backloggd link will be loaded here -->
+                    </div>
+
+                    <div id="curated-games-grid" class="games-grid ps-card-stagger">
+                        <!-- Game cards will be loaded here -->
+                    </div>
+
+                    <div id="curated-pagination" class="pagination">
+                        <!-- Pagination controls will be loaded here -->
+                    </div>
+                </section>
+
+                <!-- PlayStation Genre Explorer -->
+                <section class="genres-section ps-enter">
+                    <h2 class="section-title">Explore by Genre</h2>
+                    <div id="genre-grid" class="genre-grid ps-card-stagger">
+                        <!-- Genre cards will be loaded here -->
+                    </div>
+                </section>
+
+                <!-- PlayStation Updates -->
+                <section class="updates-section ps-enter">
+                    <h2 class="section-title">System Updates</h2>
+                    <div class="notes-container" id="notes-container">
+                        <div class="update-card ps-hover-lift">
+                            <div class="update-icon ps-pulse">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M13 2L3 14h9l-1 8l10-12h-9l1-8z"/>
+                                </svg>
+                            </div>
+                            <div class="update-content">
+                                <h3>Database Synchronized</h3>
+                                <p>Latest PSP™ game information updated from PlayStation® Network</p>
+                                <time>Just now</time>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- Games Page -->
+        <div id="games-page" class="page">
+            <div class="container">
+                <header class="page-header ps-enter">
+                    <h1>PSP™ Game Library</h1>
+                    <p>Complete PlayStation® Portable collection with detailed information and ratings</p>
+                    <div class="page-filters ps-stagger">
+                        <select id="genre-filter" class="filter-select ps-focus" aria-label="Filter by Genre">
+                            <option value="">All Genres</option>
+                        </select>
+                        <select id="sort-filter" class="filter-select ps-focus" aria-label="Sort Games">
+                            <option value="name">Name</option>
+                            <option value="-rating" selected>Rating</option>
+                            <option value="-released">Release Date</option>
+                            <option value="playtime">Playtime</option>
+                        </select>
+                        <button id="sort-direction-btn" class="nav-btn ps-hover-glow" title="Toggle Sort" aria-label="Toggle Sort">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 6h18M3 12h18M3 18h18"/>
+                            </svg>
+                        </button>
+                    </div>
+                </header>
+                <div id="games-grid" class="games-grid ps-card-stagger">
+                    <!-- Games will be loaded here -->
+                </div>
+                <div id="games-pagination" class="pagination">
+                    <!-- Pagination will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Genres Page -->
+        <div id="genres-page" class="page">
+            <div class="container">
+                <header class="page-header ps-enter">
+                    <h1>Game Genres</h1>
+                    <p>Explore PSP™ games organized by category</p>
+                </header>
+                <div id="genres-list-grid" class="genre-grid ps-card-stagger">
+                    <!-- Genre cards will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Genre Detail Page -->
+        <div id="genre-detail-page" class="page">
+            <div class="container">
+                <header class="page-header ps-enter">
+                    <h1 id="genre-detail-title">Genre Games</h1>
+                    <a href="#genres" class="nav-link back-link ps-hover-slide" data-page="genres">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                        Back to Genres
+                    </a>
+                </header>
+                <div id="genre-detail-grid" class="games-grid ps-card-stagger">
+                    <!-- Games will be loaded here -->
+                </div>
+                <div id="genre-detail-pagination" class="pagination">
+                    <!-- Pagination will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Collection Page -->
+        <div id="collection-page" class="page">
+            <div class="container">
+                <header class="page-header ps-enter">
+                    <h1>My PlayStation® Library</h1>
+                    <p>Manage your personal PSP™ game collection and achievements</p>
+                    <div class="collection-stats ps-stagger">
+                        <div class="collection-stat ps-hover-lift">
+                            <span id="owned-count">0</span>
+                            <span>Owned</span>
+                        </div>
+                        <div class="collection-stat ps-hover-lift">
+                            <span id="wishlist-count">0</span>
+                            <span>Wishlist</span>
+                        </div>
+                        <div class="collection-stat ps-hover-lift">
+                            <span id="completed-count">0</span>
+                            <span>Completed</span>
+                        </div>
+                        <div class="collection-stat ps-hover-lift">
+                            <span id="favorites-count">0</span>
+                            <span>Favorites</span>
+                        </div>
+                    </div>
+                </header>
+                <div class="collection-tabs">
+                    <button class="tab-btn active ps-interactive" data-tab="owned">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+                        </svg>
+                        Owned
+                    </button>
+                    <button class="tab-btn ps-interactive" data-tab="wishlist">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                        </svg>
+                        Wishlist
+                    </button>
+                    <button class="tab-btn ps-interactive" data-tab="completed">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 12l2 2 4-4M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z"/>
+                        </svg>
+                        Completed
+                    </button>
+                    <button class="tab-btn ps-interactive" data-tab="favorites">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        Favorites
+                    </button>
+                </div>
+                <div id="collection-content" class="collection-content ps-card-stagger">
+                    <!-- Collection content will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- About Page -->
+        <div id="about-page" class="page">
+            <div class="container">
+                <div class="about-content">
+                    <header class="page-header ps-enter">
+                        <h1>About PSP™ Game Explorer</h1>
+                        <p>The official PlayStation® resource for PSP™ gaming enthusiasts</p>
+                    </header>
+                    
+                    <div class="about-features ps-card-stagger">
+                        <div class="feature-card ps-hover-lift">
+                            <div class="feature-icon ps-pulse">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                                </svg>
+                            </div>
+                            <h3>Comprehensive Database</h3>
+                            <p>Access over 500+ PSP™ games with detailed information, professional reviews, and high-quality media.</p>
+                        </div>
+                        
+                        <div class="feature-card ps-hover-lift">
+                            <div class="feature-icon ps-pulse">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                </svg>
+                            </div>
+                            <h3>PlayStation® Network</h3>
+                            <p>Powered by official PlayStation® APIs for real-time ratings, reviews, and gaming statistics.</p>
+                        </div>
+                        
+                        <div class="feature-card ps-hover-lift">
+                            <div class="feature-icon ps-pulse">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+                                </svg>
+                            </div>
+                            <h3>Library Management</h3>
+                            <p>Professional library system to track owned games, wishlist items, and trophies.</p>
+                        </div>
+                        
+                        <div class="feature-card ps-hover-lift">
+                            <div class="feature-icon ps-pulse">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                    <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
+                                </svg>
+                            </div>
+                            <h3>Sony Engineering</h3>
+                            <p>Built with PlayStation® standards for performance, accessibility, and user experience.</p>
+                        </div>
+                        
+                        <div class="feature-card ps-hover-lift">
+                            <div class="feature-icon ps-pulse">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                                </svg>
+                            </div>
+                            <h3>Advanced Search</h3>
+                            <p>Intelligent search with filters, AI recommendations, and PlayStation® Plus benefits.</p>
+                        </div>
+                        
+                        <div class="feature-card ps-hover-lift">
+                            <div class="feature-icon ps-pulse">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 1v6m0 6v6M1 12h6m6 0h6"/>
+                                </svg>
+                            </div>
+                            <h3>Cross-Platform</h3>
+                            <p>Seamless experience across PlayStation® consoles, mobile, and web platforms.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="about-tech ps-enter">
+                        <h2>PlayStation® Technology</h2>
+                        <div class="tech-grid ps-stagger">
+                            <div class="tech-item">
+                                <h4>Frontend</h4>
+                                <p>Sony Web Framework, PlayStation® UI Kit, WebGL</p>
+                            </div>
+                            <div class="tech-item">
+                                <h4>Architecture</h4>
+                                <p>Microservices, PlayStation® Cloud, Edge Computing</p>
+                            </div>
+                            <div class="tech-item">
+                                <h4>Performance</h4>
+                                <p>60 FPS animations, Predictive loading, GPU acceleration</p>
+                            </div>
+                            <div class="tech-item">
+                                <h4>Accessibility</h4>
+                                <p>WCAG AAA compliant, PlayStation® Accessibility features</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="about-footer ps-enter" style="text-align: center; margin-top: 60px; padding: 40px 0; border-top: 1px solid rgba(0, 111, 205, 0.2);">
+                        <p style="color: rgba(255, 255, 255, 0.5); font-size: 14px;">
+                            "PlayStation", "PSP", and "PS" Family logo are registered trademarks of Sony Interactive Entertainment Inc.<br>
+                            © 2024 Sony Interactive Entertainment. All Rights Reserved.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- PlayStation Screenshot Lightbox -->
+        <div id="screenshot-lightbox" class="screenshot-lightbox">
+            <button class="lightbox-close ps-button-press" title="Close">×</button>
+            <button class="lightbox-nav prev ps-hover-glow" title="Previous">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M15 18l-6-6 6-6"/>
+                </svg>
+            </button>
+            <div class="lightbox-content">
+                <img src="" alt="Screenshot" class="lightbox-image">
+            </div>
+            <button class="lightbox-nav next ps-hover-glow" title="Next">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 18l6-6-6-6"/>
+                </svg>
+            </button>
+            <div class="lightbox-counter">1 / 1</div>
+        </div>
+    </main>
+
+    <!-- PlayStation Notification System -->
+    <div id="notification-container" class="notification-container">
+        <!-- Notifications will appear here -->
+    </div>
+
+    <!-- PlayStation Trophy Popup -->
+    <div id="trophy-popup" class="trophy-popup" style="display: none;">
+        <div class="trophy-content ps-trophy">
+            <div class="trophy-icon">🏆</div>
+            <div class="trophy-text">Trophy Unlocked!</div>
+        </div>
+    </div>
+
+    <!-- Template for fallback when an image fails to load -->
+    <template id="no-image-template">
+        <div class="game-card-placeholder no-image" style="height: 100%;">
+            <div class="game-card-placeholder-content">
+                <h3 class="game-card-placeholder-title">{{TITLE}}</h3>
+            </div>
+        </div>
+    </template>
+
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(registration => {
+                        console.log('✅ PlayStation® Service Worker registered');
+                    })
+                    .catch(error => {
+                        console.log('❌ Service Worker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+
+    <!-- Main Application -->
+    <script type="module" src="./js/app.js"></script>
+    
+    <!-- PlayStation Analytics -->
+    <script>
+        // PlayStation telemetry placeholder
+        window.PlayStationAnalytics = {
+            track: function(event, data) {
+                console.log('PlayStation® Analytics:', event, data);
+            }
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,1714 @@
+/* ===============================================
+   PSP Game Explorer - Sony PlayStation Components
+   AAA Gaming Platform Component Library
+   =============================================== */
+
+/* ===============================================
+   PlayStation Genre Cards
+   =============================================== */
+
+.genre-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: var(--spacing-lg);
+  margin: var(--spacing-4xl) 0;
+}
+
+.genre-card {
+  background: linear-gradient(135deg, rgba(0, 111, 205, 0.05) 0%, rgba(0, 0, 0, 0.8) 100%);
+  border: 1px solid rgba(0, 111, 205, 0.2);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-3xl);
+  transition: all var(--transition-ps);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(40px);
+  min-height: 240px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.genre-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient-premium);
+  transform: scaleX(0);
+  transition: transform var(--transition-ps);
+  transform-origin: left;
+}
+
+.genre-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(0, 217, 255, 0.1) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity var(--transition-ps);
+}
+
+.genre-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  border-color: var(--ps-blue-light);
+  box-shadow: 
+    0 30px 60px rgba(0, 111, 205, 0.3),
+    0 0 100px rgba(0, 217, 255, 0.1),
+    inset 0 0 30px rgba(0, 111, 205, 0.05);
+  background: linear-gradient(135deg, rgba(0, 111, 205, 0.1) 0%, rgba(0, 0, 0, 0.9) 100%);
+}
+
+.genre-card:hover::before {
+  transform: scaleX(1);
+}
+
+.genre-card:hover::after {
+  opacity: 1;
+}
+
+.genre-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-xl);
+}
+
+.genre-title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-2xl);
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  margin: 0;
+  line-height: 1.2;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.game-count {
+  background: var(--gradient-ps);
+  color: white;
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  box-shadow: 0 4px 15px rgba(0, 111, 205, 0.4);
+  white-space: nowrap;
+}
+
+.games-preview {
+  color: var(--text-muted);
+  font-size: var(--font-size-sm);
+  line-height: 1.6;
+  margin-bottom: var(--spacing-xl);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex-grow: 1;
+}
+
+.explore-btn {
+  background: linear-gradient(135deg, var(--ps-blue) 0%, var(--ps-blue-dark) 100%);
+  color: white;
+  border: none;
+  padding: var(--spacing-md) var(--spacing-xl);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  width: 100%;
+  font-family: var(--font-primary);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 111, 205, 0.4);
+}
+
+.explore-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 100%);
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform var(--transition-fast);
+}
+
+.explore-btn:hover {
+  background: linear-gradient(135deg, var(--ps-blue-light) 0%, var(--ps-blue) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 111, 205, 0.5);
+}
+
+.explore-btn:hover::before {
+  transform: translate(-50%, -50%) scale(2);
+}
+
+/* ===============================================
+   PlayStation Game Cards
+   =============================================== */
+
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: var(--spacing-lg);
+  margin: var(--spacing-4xl) 0;
+}
+
+.game-card {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.95) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition-ps);
+  cursor: pointer;
+  position: relative;
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.game-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(0, 111, 205, 0.1) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity var(--transition-ps);
+}
+
+.game-card:hover {
+  transform: translateY(-12px) scale(1.03);
+  border-color: var(--ps-blue);
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.6),
+    0 0 60px rgba(0, 111, 205, 0.2);
+}
+
+.game-card:hover::before {
+  opacity: 1;
+}
+
+.game-card-image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+  background: linear-gradient(135deg, var(--neutral-800), var(--neutral-900));
+  position: relative;
+}
+
+.game-card:hover .game-card-image {
+  transform: scale(1.08);
+}
+
+.game-card-content {
+  padding: var(--spacing-xl);
+  position: relative;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
+}
+
+.game-card-title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-md);
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  letter-spacing: -0.01em;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.game-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-lg);
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+}
+
+.game-card-image-container {
+    width: 100%;
+    height: 220px; /* Same height as your .game-card-image */
+    background: var(--neutral-900); /* Fallback background color */
+    overflow: hidden; /* Important for the hover effect */
+    position: relative;
+}
+
+/* Make sure the image and the placeholder fill the container */
+.game-card-image-container > img,
+.game-card-image-container > .game-card-placeholder {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.game-rating {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  background: var(--gradient-ps);
+  color: white;
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  font-size: var(--font-size-xs);
+  box-shadow: 0 4px 15px rgba(0, 111, 205, 0.4);
+}
+
+.game-platforms {
+  display: flex;
+  gap: var(--spacing-xs);
+  flex-wrap: wrap;
+  margin-bottom: var(--spacing-lg);
+}
+
+.platform-tag {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-muted);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-xxs);
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.game-genres {
+  display: flex;
+  gap: var(--spacing-xs);
+  flex-wrap: wrap;
+}
+
+.genre-tag {
+  background: rgba(0, 217, 255, 0.1);
+  color: var(--secondary-color);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-xxs);
+  font-weight: 600;
+  border: 1px solid rgba(0, 217, 255, 0.2);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ===============================================
+   Featured Games - Hero Cards
+   =============================================== */
+
+.featured-games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: var(--spacing-lg);
+  margin: var(--spacing-4xl) 0;
+}
+
+.featured-game {
+  position: relative;
+  background: var(--bg-surface);
+  border: 1px solid rgba(0, 111, 205, 0.2);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  height: 420px;
+  cursor: pointer;
+  transition: all var(--transition-ps);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+.featured-game::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(0, 111, 205, 0.2) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity var(--transition-ps);
+  z-index: 1;
+}
+
+.featured-game:hover {
+  transform: translateY(-10px) scale(1.02);
+  border-color: var(--ps-blue-light);
+  box-shadow: 
+    0 40px 80px rgba(0, 0, 0, 0.7),
+    0 0 80px rgba(0, 111, 205, 0.3);
+}
+
+.featured-game:hover::before {
+  opacity: 1;
+}
+
+.featured-game-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all var(--transition-slow);
+}
+
+.featured-game:hover .featured-game-bg {
+  transform: scale(1.1);
+  filter: brightness(1.1);
+}
+
+.featured-game-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--spacing-3xl);
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.98));
+  backdrop-filter: blur(20px);
+  z-index: 2;
+}
+
+.featured-game-title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-2xl);
+  font-weight: 800;
+  color: white;
+  margin-bottom: var(--spacing-sm);
+  letter-spacing: -0.02em;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+}
+
+.featured-game-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  font-size: var(--font-size-sm);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ===============================================
+   PlayStation Modal System
+   =============================================== */
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: var(--z-modal);
+  backdrop-filter: blur(30px);
+  opacity: 0;
+  transition: opacity var(--transition-slow);
+}
+
+.modal.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xl);
+  opacity: 1;
+  animation: modalFadeIn var(--transition-ps);
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0);
+  }
+  to {
+    opacity: 1;
+    backdrop-filter: blur(30px);
+  }
+}
+
+.modal-content {
+  background: linear-gradient(135deg, rgba(5, 5, 5, 0.98) 0%, rgba(0, 0, 0, 0.98) 100%);
+  border: 1px solid rgba(0, 111, 205, 0.2);
+  border-radius: var(--radius-2xl);
+  max-width: 90vw;
+  max-height: 90vh;
+  position: relative;
+  box-shadow: 
+    0 50px 100px rgba(0, 0, 0, 0.8),
+    0 0 100px rgba(0, 111, 205, 0.2);
+  transform: scale(0.9);
+  transition: transform var(--transition-ps);
+  overflow: hidden;
+}
+
+.modal.active .modal-content {
+  transform: scale(1);
+}
+
+.modal-header {
+  position: sticky;
+  top: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.98) 0%, rgba(0, 0, 0, 0.95) 100%);
+  backdrop-filter: blur(40px);
+  border-bottom: 1px solid rgba(0, 111, 205, 0.2);
+  padding: var(--spacing-xl);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 10;
+}
+
+.modal-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--gradient-premium);
+  opacity: 0.5;
+}
+
+.modal-title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-2xl);
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.modal-close {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-muted);
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-xl);
+  font-weight: 300;
+  position: relative;
+  overflow: hidden;
+}
+
+.modal-close::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background: var(--error-color);
+  border-radius: var(--radius-full);
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform var(--transition-fast);
+  opacity: 0.5;
+}
+
+.modal-close:hover {
+  color: white;
+  border-color: var(--error-color);
+  transform: rotate(90deg);
+}
+
+.modal-close:hover::before {
+  transform: translate(-50%, -50%) scale(2);
+}
+
+.modal-body {
+  padding: 0;
+  overflow-y: auto;
+  max-height: calc(90vh - 80px);
+  scrollbar-width: thin;
+  scrollbar-color: var(--ps-blue) rgba(0, 0, 0, 0.5);
+}
+
+/* ===============================================
+   Game Detail Modal - PlayStation Style
+   =============================================== */
+
+.game-modal .modal-content {
+  max-width: 1200px;
+  width: 95vw;
+}
+
+.game-hero {
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--neutral-900), var(--ps-black));
+}
+
+.game-hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.7;
+  filter: brightness(0.8);
+  transition: all var(--transition-slow);
+}
+
+.game-hero:hover .game-hero-bg {
+  transform: scale(1.05);
+  filter: brightness(1);
+}
+
+.game-hero-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.98));
+  padding: var(--spacing-3xl);
+  backdrop-filter: blur(20px);
+}
+
+.game-title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-5xl);
+  font-weight: 900;
+  color: white;
+  margin-bottom: var(--spacing-sm);
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.game-subtitle {
+  font-size: var(--font-size-lg);
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: var(--spacing-lg);
+  font-weight: 400;
+}
+
+.game-meta-bar {
+  display: flex;
+  gap: var(--spacing-xl);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.game-rating-large {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  background: var(--gradient-ps);
+  color: white;
+  padding: var(--spacing-md) var(--spacing-xl);
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  font-size: var(--font-size-base);
+  box-shadow: 0 8px 30px rgba(0, 111, 205, 0.5);
+}
+
+.game-release-date {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.game-content {
+  padding: var(--spacing-3xl);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.95) 0%, rgba(5, 5, 5, 0.98) 100%);
+}
+
+.game-section {
+  margin-bottom: var(--spacing-3xl);
+}
+
+.game-section-title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 2px solid rgba(0, 111, 205, 0.3);
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  position: relative;
+}
+
+.game-section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: var(--gradient-premium);
+  box-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
+}
+
+.game-description {
+  font-size: var(--font-size-base);
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-xl);
+}
+
+.game-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-3xl);
+}
+
+.game-stat {
+  background: linear-gradient(135deg, rgba(0, 111, 205, 0.05) 0%, rgba(0, 0, 0, 0.5) 100%);
+  border: 1px solid rgba(0, 111, 205, 0.2);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xl);
+  text-align: center;
+  transition: all var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.game-stat::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(0, 217, 255, 0.1) 0%, transparent 70%);
+  animation: statRotate 20s linear infinite;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+@keyframes statRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.game-stat:hover {
+  transform: translateY(-4px);
+  border-color: var(--ps-blue-light);
+  box-shadow: 0 15px 40px rgba(0, 111, 205, 0.3);
+}
+
+.game-stat:hover::before {
+  opacity: 1;
+}
+
+.game-stat-value {
+  display: block;
+  font-size: var(--font-size-2xl);
+  font-weight: 900;
+  background: var(--gradient-premium);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: var(--spacing-xs);
+  font-family: var(--font-heading);
+}
+
+.game-stat-label {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+}
+
+.game-tags {
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--spacing-xl);
+}
+
+.game-tag {
+  background: rgba(0, 217, 255, 0.1);
+  color: var(--secondary-color);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  border: 1px solid rgba(0, 217, 255, 0.2);
+  transition: all var(--transition-fast);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.game-tag:hover {
+  background: var(--gradient-premium);
+  color: white;
+  border-color: var(--ps-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 217, 255, 0.3);
+}
+
+/* ===============================================
+   PlayStation Screenshot Gallery
+   =============================================== */
+
+.game-screenshots {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
+.game-screenshot {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-ps);
+  cursor: pointer;
+  border: 2px solid transparent;
+  background: var(--neutral-900);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.game-screenshot:hover {
+  transform: scale(1.05) translateY(-5px);
+  border-color: var(--ps-blue);
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.7),
+    0 0 50px rgba(0, 111, 205, 0.3);
+}
+
+.game-screenshot::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(0, 217, 255, 0.2) 50%,
+    transparent 70%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.game-screenshot:hover::after {
+  transform: translateX(100%);
+}
+
+/* Screenshot Lightbox */
+.screenshot-lightbox {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.98);
+  z-index: var(--z-modal);
+  backdrop-filter: blur(40px);
+  opacity: 0;
+  transition: opacity var(--transition-slow);
+}
+
+.screenshot-lightbox.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+}
+
+.lightbox-content {
+  max-width: 90vw;
+  max-height: 85vh;
+  position: relative;
+  animation: lightboxZoom var(--transition-ps);
+}
+
+@keyframes lightboxZoom {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.lightbox-image {
+  display: block;
+  max-width: 100%;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: var(--radius-lg);
+  box-shadow: 
+    0 50px 100px rgba(0, 0, 0, 0.8),
+    0 0 100px rgba(0, 111, 205, 0.2);
+}
+
+.lightbox-close {
+  position: fixed;
+  top: var(--spacing-xl);
+  right: var(--spacing-xl);
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-2xl);
+  z-index: 10;
+  backdrop-filter: blur(20px);
+}
+
+.lightbox-close:hover {
+  background: var(--error-color);
+  transform: scale(1.1) rotate(90deg);
+  box-shadow: 0 0 30px rgba(255, 23, 68, 0.5);
+}
+
+.lightbox-nav {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.6;
+  backdrop-filter: blur(20px);
+}
+
+.lightbox-nav:hover {
+  opacity: 1;
+  background: var(--gradient-ps);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 0 40px rgba(0, 111, 205, 0.5);
+}
+
+.lightbox-nav.prev {
+  left: var(--spacing-xl);
+}
+
+.lightbox-nav.next {
+  right: var(--spacing-xl);
+}
+
+.lightbox-counter {
+  position: fixed;
+  bottom: var(--spacing-xl);
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: var(--text-secondary);
+  padding: var(--spacing-sm) var(--spacing-xl);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ===============================================
+   Enhanced Search Modal - PlayStation Style
+   =============================================== */
+
+.search-modal .modal-content {
+  max-width: 800px;
+  width: 95vw;
+}
+
+.search-header {
+  padding: var(--spacing-2xl);
+  border-bottom: 1px solid rgba(0, 111, 205, 0.2);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.98) 0%, rgba(5, 5, 5, 0.95) 100%);
+}
+
+.search-container {
+  position: relative;
+  margin-bottom: var(--spacing-lg);
+}
+
+.search-input {
+  width: 100%;
+  padding: var(--spacing-lg) var(--spacing-xl);
+  padding-right: 60px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 2px solid rgba(0, 111, 205, 0.3);
+  border-radius: var(--radius-full);
+  color: var(--text-primary);
+  font-size: var(--font-size-lg);
+  font-family: var(--font-primary);
+  transition: all var(--transition-fast);
+  backdrop-filter: blur(20px);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--ps-blue-light);
+  box-shadow: 
+    0 0 0 4px rgba(0, 111, 205, 0.1),
+    0 0 40px rgba(0, 217, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.search-input::placeholder {
+  color: var(--text-disabled);
+  font-size: var(--font-size-base);
+}
+
+.search-close {
+  position: absolute;
+  right: var(--spacing-md);
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-muted);
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-lg);
+}
+
+.search-close:hover {
+  background: var(--error-color);
+  color: white;
+  border-color: var(--error-color);
+  transform: scale(1.1) rotate(90deg);
+}
+
+.search-filters {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+  flex-wrap: wrap;
+}
+
+.search-filter-btn {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-muted);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.search-filter-btn.active,
+.search-filter-btn:hover {
+  background: var(--gradient-ps);
+  color: white;
+  border-color: var(--ps-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 111, 205, 0.4);
+}
+
+.search-results {
+  max-height: 520px;
+  overflow-y: auto;
+  padding: var(--spacing-lg);
+  scrollbar-width: thin;
+  scrollbar-color: var(--ps-blue) rgba(0, 0, 0, 0.5);
+}
+
+.search-result {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-lg);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid transparent;
+  border-radius: var(--radius-xl);
+  margin-bottom: var(--spacing-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.search-result::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 217, 255, 0.1), transparent);
+  transition: left var(--transition-ps);
+}
+
+.search-result:hover {
+  border-color: var(--ps-blue);
+  background: rgba(0, 111, 205, 0.05);
+  transform: translateX(8px);
+  box-shadow: 0 10px 30px rgba(0, 111, 205, 0.2);
+}
+
+.search-result:hover::before {
+  left: 100%;
+}
+
+.search-result-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  background: var(--neutral-900);
+  flex-shrink: 0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.search-result-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.search-result-title {
+  color: var(--text-primary);
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  margin-bottom: var(--spacing-xs);
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  letter-spacing: -0.01em;
+}
+
+.search-result-meta {
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.search-result-rating {
+  background: var(--gradient-ps);
+  color: white;
+  padding: 2px var(--spacing-sm);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+}
+
+/* ===============================================
+   PlayStation Notification System
+   =============================================== */
+
+.notification-container {
+  position: fixed;
+  top: 100px;
+  right: var(--spacing-xl);
+  z-index: var(--z-notification);
+  max-width: 480px;
+}
+
+.notification {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.98) 0%, rgba(5, 5, 5, 0.95) 100%);
+  border: 1px solid rgba(0, 111, 205, 0.3);
+  border-left: 4px solid var(--ps-blue);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
+  backdrop-filter: blur(40px);
+  animation: notificationSlide var(--transition-ps);
+  position: relative;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+}
+
+@keyframes notificationSlide {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.notification.success {
+  border-left-color: var(--success-color);
+}
+
+.notification.error {
+  border-left-color: var(--error-color);
+}
+
+.notification.warning {
+  border-left-color: var(--warning-color);
+}
+
+.notification-title {
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.notification-message {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* ===============================================
+   PlayStation Pagination
+   =============================================== */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin: var(--spacing-4xl) 0;
+}
+
+.pagination-btn {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-secondary);
+  min-width: 48px;
+  height: 48px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-family: var(--font-primary);
+  font-weight: 700;
+  font-size: var(--font-size-sm);
+  padding: 0 var(--spacing-md);
+}
+
+.pagination-btn:hover:not(:disabled) {
+  background: var(--gradient-ps);
+  color: white;
+  border-color: var(--ps-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 111, 205, 0.4);
+}
+
+.pagination-btn.active {
+  background: var(--gradient-ps);
+  color: white;
+  border-color: var(--ps-blue);
+  box-shadow: 0 8px 25px rgba(0, 111, 205, 0.4);
+}
+
+.pagination-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ===============================================
+   Collection Components
+   =============================================== */
+
+.collection-stats {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-xl);
+  margin-top: var(--spacing-xl);
+  flex-wrap: wrap;
+}
+
+.collection-stat {
+  text-align: center;
+  background: linear-gradient(135deg, rgba(0, 111, 205, 0.05) 0%, rgba(0, 0, 0, 0.5) 100%);
+  border: 1px solid rgba(0, 111, 205, 0.2);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-2xl);
+  min-width: 160px;
+  transition: all var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.collection-stat::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(0, 217, 255, 0.1) 0%, transparent 70%);
+  animation: collectionRotate 25s linear infinite;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+@keyframes collectionRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.collection-stat:hover {
+  transform: translateY(-6px) scale(1.05);
+  border-color: var(--ps-blue-light);
+  box-shadow: 0 20px 50px rgba(0, 111, 205, 0.3);
+}
+
+.collection-stat:hover::before {
+  opacity: 1;
+}
+
+.collection-stat span:first-child {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-3xl);
+  font-weight: 900;
+  background: var(--gradient-premium);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: var(--spacing-xs);
+  line-height: 1;
+}
+
+.collection-stat span:last-child {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.collection-tabs {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-xs);
+  margin: var(--spacing-4xl) 0;
+  border-bottom: 2px solid rgba(0, 111, 205, 0.1);
+  padding-bottom: 0;
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  padding: var(--spacing-lg) var(--spacing-xl);
+  cursor: pointer;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  transition: all var(--transition-fast);
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tab-btn::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient-premium);
+  transform: scaleX(0);
+  transition: transform var(--transition-fast);
+  box-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
+}
+
+.tab-btn:hover {
+  color: var(--text-secondary);
+}
+
+.tab-btn.active {
+  color: var(--ps-blue-light);
+}
+
+.tab-btn.active::after {
+  transform: scaleX(1);
+}
+
+/* ===============================================
+   PlayStation Curated Collection Tabs
+   =============================================== */
+
+.curated-section {
+  text-align: center;
+}
+
+.curated-tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin: var(--spacing-3xl) 0;
+}
+
+.curated-tab {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-muted);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--radius-full);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap; /* Prevents text from wrapping */
+}
+
+.curated-tab:hover {
+  color: var(--text-primary);
+  border-color: var(--ps-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 111, 205, 0.3);
+}
+
+.curated-tab.active {
+  background: var(--gradient-ps);
+  color: white;
+  border-color: var(--ps-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 111, 205, 0.4);
+}
+
+.curated-link-container {
+  margin-top: var(--spacing-xl);
+  margin-bottom: var(--spacing-2xl);
+}
+
+.curated-link-container a {
+  display: inline-block;
+  color: var(--ps-blue-light);
+  border: 1px solid rgba(0, 111, 205, 0.5);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.curated-link-container a:hover {
+  background-color: var(--ps-blue);
+  color: white;
+  border-color: var(--ps-blue);
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 111, 205, 0.4);
+}
+
+/* ===============================================
+   PlayStation Page Filters
+   =============================================== */
+
+.page-filters {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-lg);
+  margin: var(--spacing-2xl) 0;
+  flex-wrap: wrap;
+}
+
+.filter-select {
+  /* Reset appearance to allow custom styling */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  /* Base styles matching other inputs */
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-secondary);
+  padding: var(--spacing-md) var(--spacing-3xl) var(--spacing-md) var(--spacing-lg); /* Extra padding for arrow */
+  border-radius: var(--radius-full);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+
+  /* Custom dropdown arrow */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23FFFFFF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--spacing-md) center;
+  background-size: 1em;
+}
+
+.filter-select:hover {
+  border-color: var(--ps-blue);
+}
+
+/* The .ps-focus class in animations.css will handle the focus glow */
+
+.page-filters .nav-btn {
+  /* This ensures the sort button matches the nav buttons exactly */
+  flex-shrink: 0; /* Prevents the button from shrinking */
+}
+
+/* ===============================================
+   PlayStation Dropdown/Select Styling
+   =============================================== */
+
+/* Style the individual options in the dropdown */
+.filter-select option {
+  background: var(--bg-surface); /* A dark surface color from your theme */
+  color: var(--text-secondary);   /* Light text for readability */
+  padding: var(--spacing-sm);     /* Add some padding for better spacing */
+  font-family: var(--font-primary);
+}
+
+/* ===============================================
+   PlayStation Graceful Placeholders
+   =============================================== */
+
+.game-card-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--spacing-xl);
+  height: 100%; /* Ensure it fills the card height */
+  background: linear-gradient(145deg, rgba(5, 5, 5, 0.98) 0%, var(--bg-surface) 100%);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(0, 111, 205, 0.1);
+}
+
+/* A subtle, techy dot grid for the background */
+.game-card-placeholder::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(circle at 1px 1px, rgba(0, 111, 205, 0.15) 1px, transparent 0);
+  background-size: 20px 20px;
+  opacity: 0.5;
+  animation: bg-pan 60s linear infinite;
+}
+
+@keyframes bg-pan {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 200% 200%; }
+}
+
+.game-card-placeholder-content {
+  position: relative;
+  z-index: 1;
+}
+
+.game-card-placeholder-title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.3;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.game-card-placeholder-meta {
+  display: block;
+  margin-top: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+  font-style: italic;
+  opacity: 0.7;
+}
+
+/* Specific styling for cards that have data but no image */
+.game-card.no-image {
+  cursor: pointer; /* It's still a clickable card */
+}
+
+.game-card.no-image .game-card-placeholder-title {
+  background: var(--gradient-premium);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Hide the normal content area for placeholder cards */
+.game-card.no-image .game-card-content {
+  display: none;
+}
+
+/* ===============================================
+   Responsive Design
+   =============================================== */
+
+@media (max-width: 1024px) {
+  .genre-grid,
+  .games-grid,
+  .featured-games-grid {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  }
+  
+  .game-modal .modal-content {
+    max-width: 95vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .genre-grid,
+  .games-grid,
+  .featured-games-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+  
+  .game-card {
+    min-height: 340px;
+  }
+  
+  .featured-game {
+    height: 360px;
+  }
+  
+  .modal {
+    padding: var(--spacing-md);
+  }
+  
+  .modal-content {
+    max-width: 100%;
+    border-radius: var(--radius-xl);
+  }
+  
+  .game-hero {
+    height: 320px;
+  }
+  
+  .game-title {
+    font-size: var(--font-size-3xl);
+  }
+  
+  .game-screenshots {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-sm);
+  }
+  
+  .search-modal .modal-content {
+    width: 100%;
+  }
+  
+  .collection-stats {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .collection-tabs {
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+  }
+  
+  .notification-container {
+    left: var(--spacing-md);
+    right: var(--spacing-md);
+    max-width: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .game-hero {
+    height: 280px;
+  }
+  
+  .game-hero-overlay {
+    padding: var(--spacing-xl);
+  }
+  
+  .game-title {
+    font-size: var(--font-size-2xl);
+  }
+  
+  .game-meta-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+  }
+  
+  .game-screenshots {
+    grid-template-columns: 1fr;
+  }
+  
+  .search-result {
+    padding: var(--spacing-md);
+    gap: var(--spacing-md);
+  }
+  
+  .search-result-image {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .tab-btn {
+    padding: var(--spacing-md);
+    font-size: var(--font-size-xs);
+  }
+}

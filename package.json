@@ -6,7 +6,6 @@
   "scripts": {
     "start": "npx serve -s . -p 8000",
     "dev": "npx live-server --port=8000 --open=/",
-    "build": "echo 'No build required - this is a vanilla JavaScript app'",
     "test": "echo 'Tests can be added with your preferred testing framework'",
     "deploy": "echo 'Deploy the entire folder to your hosting service'"
   },
